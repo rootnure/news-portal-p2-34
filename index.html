@@ -9,14 +9,48 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- fontawesome kit -->
-    <script src="https://kit.fontawesome.com/7aba5113e1.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/7aba5113e1.js" crossorigin="anonymous"></script> -->
+    <!-- google font Playfair Display & Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        .font-playfair-display {
+            font-family: 'Playfair Display', serif;
+        }
+        .font-roboto {
+            font-family: 'Roboto', sans-serif;
+        }
+        .active {
+            font-weight: 700 !important;
+            text-decoration: underline !important;
+            color: #5D5FEF !important;
+        }
+    </style>
 </head>
 
-<body>
-    <header>
-
+<body class="font-roboto">
+    <header class="container mx-auto my-6">
+        <div class="flex justify-between items-center">
+            <div>
+                <p class="font-playfair-display flex items-center gap-x-2">
+                    <span class="bg-[#5D5FEF] text-white rounded-lg px-3 py-2">News</span>
+                    <span>Portal</span>
+                </p>
+            </div>
+            <div class="flex gap-x-8 items-center text-gray-400">
+                <span class="hover:text-black cursor-pointer active">News</span>
+                <span class="hover:text-black cursor-pointer">Blog</span>
+                <span>
+                    <img src="./images/user.png" alt="User Profile Picture" class="rounded-full">
+                </span>
+            </div>
+        </div>
     </header>
     <main>
+        <nav></nav>
 
     </main>
     <footer>
