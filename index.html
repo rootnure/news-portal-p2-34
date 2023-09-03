@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500;700&display=swap"
         rel="stylesheet">
     <style>
         .font-playfair-display {
@@ -23,16 +23,20 @@
         .font-roboto {
             font-family: 'Roboto', sans-serif;
         }
-        .active {
+        .active-header {
             font-weight: 700 !important;
             text-decoration: underline !important;
             color: #5D5FEF !important;
+        }
+        .active-tab {
+            color: #5D5FEF !important;
+            background-color: #5d5fef10 !important;
         }
     </style>
 </head>
 
 <body class="font-roboto">
-    <header class="container mx-auto my-6">
+    <header class="container mx-auto py-6 px-4 border-b-2">
         <div class="flex justify-between items-center">
             <div>
                 <p class="font-playfair-display flex items-center gap-x-2">
@@ -41,7 +45,7 @@
                 </p>
             </div>
             <div class="flex gap-x-8 items-center text-gray-400">
-                <span class="hover:text-black cursor-pointer active">News</span>
+                <span class="hover:text-black cursor-pointer active-header">News</span>
                 <span class="hover:text-black cursor-pointer">Blog</span>
                 <span>
                     <img src="./images/user.png" alt="User Profile Picture" class="rounded-full">
@@ -49,8 +53,12 @@
             </div>
         </div>
     </header>
-    <main>
-        <nav></nav>
+    <main class="container mx-auto my-6">
+        <nav id="navigation-contaienr">
+            <ul id="category-container" class="flex justify-around flex-wrap text-gray-600">
+                <li class="active-tab px-3 py-1 rounded-md cursor-pointer" onclick="loadNewsByCategory('00')">Home</li>
+            </ul>
+        </nav>
 
     </main>
     <footer>
