@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <style>
         .font-playfair-display {
@@ -35,7 +35,7 @@
     </style>
 </head>
 
-<body class="font-roboto">
+<body class="font-roboto bg-[#F6F6F6]">
     <header class="container mx-auto py-6 px-4 border-b-2">
         <div class="flex justify-between items-center">
             <div>
@@ -56,10 +56,35 @@
     <main class="container mx-auto my-6">
         <nav id="navigation-contaienr">
             <ul id="category-container" class="flex justify-around flex-wrap text-gray-600">
-                <li class="active-tab px-3 py-1 rounded-md cursor-pointer" onclick="loadNewsByCategory('00')">Home</li>
+                <li class="active-tab px-2 py-1 rounded-md cursor-pointer" onclick="loadNewsByCategory()">Home</li>
+                <!-- dynamic categories here -->
+
             </ul>
         </nav>
-
+        <section id="news-container" class="">
+            <div id="result-summary" class="px-3">
+                <h3 class="my-6 bg-white p-4 rounded-md text-xl font-semibold">
+                    <span id="result-count">4</span>
+                    <span> items found for category </span>
+                    <span id="result-count-for">Home</span>
+                </h3>
+            </div>
+            <div id="sorting-selection-container" class="px-3 flex justify-between">
+                <div id="sort-by-selector" class="flex items-center gap-x-2">
+                    <h3 class="font-bold">Sort By: </h3>
+                    <select name="" id="" class="">
+                        <option value="default">Default</option>
+                        <option value="views">Popularity</option>
+                        <option value="date">Latest News</option>
+                        <option value="rating">Highest Rating</option>
+                    </select>
+                </div>
+                <div id="sort-using-btn">
+                    <button class="btn py-1 px-6 hover:text-[#5D5FEF] bg-[#5D5FEF] hover:bg-transparent border hover:border-[#5D5FEF] text-[#F6F6F6] rounded normal-case">Today's Pick</button>
+                    <button class="btn py-1 px-6 hover:text-[#F6F6F6] bg-transparent hover:bg-[#5D5FEF] text-[#5D5FEF] border border-[#5D5FEF] rounded normal-case">Trending</button>
+                </div>
+            </div>
+        </section>
     </main>
     <footer>
 
