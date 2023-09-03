@@ -2,94 +2,105 @@
 <html lang="en" data-theme="light">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News Portal DaisyUI</title>
-    <!-- TailwindCSS & DaisyUI -->
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- fontawesome kit -->
-    <!-- <script src="https://kit.fontawesome.com/7aba5113e1.js" crossorigin="anonymous"></script> -->
-    <!-- google font Playfair Display & Roboto -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-    <style>
-        .font-playfair-display {
-            font-family: 'Playfair Display', serif;
-        }
-        .font-roboto {
-            font-family: 'Roboto', sans-serif;
-        }
-        .active-header {
-            font-weight: 700 !important;
-            text-decoration: underline !important;
-            color: #5D5FEF !important;
-        }
-        .active-tab {
-            color: #5D5FEF !important;
-            background-color: #5d5fef10 !important;
-        }
-    </style>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>News Portal DaisyUI</title>
+   <!-- TailwindCSS & DaisyUI -->
+   <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
+   <script src="https://cdn.tailwindcss.com"></script>
+   <!-- fontawesome kit -->
+   <script src="https://kit.fontawesome.com/7aba5113e1.js" crossorigin="anonymous"></script>
+   <!-- google font Playfair Display & Roboto -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500;600;700&display=swap"
+      rel="stylesheet">
+   <style>
+      .font-playfair-display {
+         font-family: 'Playfair Display', serif;
+      }
+
+      .font-roboto {
+         font-family: 'Roboto', sans-serif;
+      }
+
+      .active-header {
+         font-weight: 700 !important;
+         text-decoration: underline !important;
+         color: #5D5FEF !important;
+      }
+
+      .active-tab {
+         color: #5D5FEF !important;
+         background-color: #5d5fef10 !important;
+      }
+   </style>
 </head>
 
 <body class="font-roboto bg-[#F6F6F6]">
-    <header class="container mx-auto py-6 px-4 border-b-2">
-        <div class="flex justify-between items-center">
-            <div>
-                <p class="font-playfair-display flex items-center gap-x-2">
-                    <span class="bg-[#5D5FEF] text-white rounded-lg px-3 py-2">News</span>
-                    <span>Portal</span>
-                </p>
-            </div>
-            <div class="flex gap-x-8 items-center text-gray-400">
-                <span class="hover:text-black cursor-pointer active-header">News</span>
-                <span class="hover:text-black cursor-pointer">Blog</span>
-                <span>
-                    <img src="./images/user.png" alt="User Profile Picture" class="rounded-full">
-                </span>
-            </div>
-        </div>
-    </header>
-    <main class="container mx-auto my-6">
-        <nav id="navigation-contaienr">
-            <ul id="category-container" class="flex justify-around flex-wrap text-gray-600">
-                <li class="active-tab px-2 py-1 rounded-md cursor-pointer" onclick="loadNewsByCategory()">Home</li>
-                <!-- dynamic categories here -->
+   <header class="container mx-auto py-6 px-4 border-b-2">
+      <div class="flex justify-between items-center">
+         <div>
+            <p class="font-playfair-display flex items-center gap-x-2">
+               <span class="bg-[#5D5FEF] text-white rounded-lg px-3 py-2">News</span>
+               <span>Portal</span>
+            </p>
+         </div>
+         <div class="flex gap-x-8 items-center text-gray-400">
+            <span class="hover:text-black cursor-pointer active-header">News</span>
+            <span class="hover:text-black cursor-pointer">Blog</span>
+            <span>
+               <img src="./images/user.png" alt="User Profile Picture" class="rounded-full">
+            </span>
+         </div>
+      </div>
+   </header>
+   <main class="container mx-auto my-6">
+      <nav id="navigation-contaienr">
+         <ul id="category-container" class="flex justify-around flex-wrap text-gray-600">
+            <li class="active-tab px-2 py-1 rounded-md cursor-pointer" onclick="loadNewsByCategory(this, '08')">Home
+            </li>
+            <!-- dynamic categories here -->
 
-            </ul>
-        </nav>
-        <section id="news-container" class="">
-            <div id="result-summary" class="px-3">
-                <h3 class="my-6 bg-white p-4 rounded-md text-xl font-semibold">
-                    <span id="result-count">4</span>
-                    <span> items found for category </span>
-                    <span id="result-count-for">Home</span>
-                </h3>
+         </ul>
+      </nav>
+      <section id="summary-sorting-container" class="">
+         <div id="result-summary" class="px-3">
+            <h3 class="my-6 bg-white p-4 rounded-md text-xl">
+               <span id="result-count">0</span>
+               <span> items found for category </span>
+               <span id="result-count-for" class="font-bold">Default</span>
+            </h3>
+         </div>
+         <div id="sorting-selection-container" class="px-3 flex justify-between">
+            <div id="sort-by-selector" class="flex items-center gap-x-2">
+               <h3 class="font-bold">Sort By: </h3>
+               <select name="" id="" class="">
+                  <option value="default">Default</option>
+                  <option value="views">Popularity</option>
+                  <option value="date">Latest News</option>
+                  <option value="rating">Highest Rating</option>
+               </select>
             </div>
-            <div id="sorting-selection-container" class="px-3 flex justify-between">
-                <div id="sort-by-selector" class="flex items-center gap-x-2">
-                    <h3 class="font-bold">Sort By: </h3>
-                    <select name="" id="" class="">
-                        <option value="default">Default</option>
-                        <option value="views">Popularity</option>
-                        <option value="date">Latest News</option>
-                        <option value="rating">Highest Rating</option>
-                    </select>
-                </div>
-                <div id="sort-using-btn">
-                    <button class="btn py-1 px-6 hover:text-[#5D5FEF] bg-[#5D5FEF] hover:bg-transparent border hover:border-[#5D5FEF] text-[#F6F6F6] rounded normal-case">Today's Pick</button>
-                    <button class="btn py-1 px-6 hover:text-[#F6F6F6] bg-transparent hover:bg-[#5D5FEF] text-[#5D5FEF] border border-[#5D5FEF] rounded normal-case">Trending</button>
-                </div>
+            <div id="sort-using-btn">
+               <button
+                  class="btn py-1 px-6 hover:text-[#5D5FEF] bg-[#5D5FEF] hover:bg-transparent border hover:border-[#5D5FEF] text-[#F6F6F6] rounded normal-case">Today's
+                  Pick</button>
+               <button
+                  class="btn py-1 px-6 hover:text-[#F6F6F6] bg-transparent hover:bg-[#5D5FEF] text-[#5D5FEF] border border-[#5D5FEF] rounded normal-case">Trending</button>
             </div>
-        </section>
-    </main>
-    <footer>
+         </div>
+      </section>
+      <!-- dynamic news on categories here -->
+      <section id="news-container" class="my-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+         
+      </section>
+   </main>
+   <footer>
 
-    </footer>
-    <script src="./js/news.js"></script>
+   </footer>
+   <script src="./js/news.js"></script>
 </body>
 
 </html>
