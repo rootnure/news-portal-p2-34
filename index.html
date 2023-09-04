@@ -74,9 +74,9 @@
             </h3>
          </div>
          <div id="sorting-selection-container" class="px-3 flex justify-between">
-            <div id="sort-by-selector" class="flex items-center gap-x-2">
+            <div id="" class="flex items-center gap-x-2">
                <h3 class="font-bold">Sort By: </h3>
-               <select name="" id="" class="">
+               <select name="" id="sort-by-selector" class="p-2 rounded-md">
                   <option value="default">Default</option>
                   <option value="views">Popularity</option>
                   <option value="date">Latest News</option>
@@ -92,9 +92,15 @@
             </div>
          </div>
       </section>
-      <!-- dynamic news on categories here -->
-      <section id="news-container" class="my-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-         
+      <section>
+         <!-- loading spinner -->
+         <div id="loading-spinner" class="flex justify-center h-96 items-center text-center">
+            <span class="loading loading-bars loading-lg text-blue-500"></span>
+         </div>
+         <!-- dynamic news on categories here -->
+         <div id="news-container" class="my-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+         </div>
       </section>
    </main>
    <footer>

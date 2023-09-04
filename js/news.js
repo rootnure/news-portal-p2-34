@@ -17,9 +17,8 @@ const displayAllCategory = categories => {
 }
 
 const loadNewsByCategory = async (target, categoryId = '08') => {
+   toggleLoadingSpinner(true);
    const activeTab = document.querySelector('.active-tab');
-   console.log(activeTab);
-   console.log(target);
    target ? activeTab.classList.remove("active-tab") : "";
    target ? target.classList.add('active-tab') : "";
 
@@ -46,6 +45,7 @@ const displayCategoryNews = (allNews, category) => {
             <h2 class="text-4xl font-bold"><span class="text-red-500">Oops!!!</span> No news found for "<span class="italic">${category}</span>" category...</h2>
          </div>
       `;
+      toggleLoadingSpinner(false);
       return;
    }
 
@@ -54,14 +54,14 @@ const displayCategoryNews = (allNews, category) => {
       const {img, name, published_date} = author;
       const newsDiv = document.createElement('div');
       newsDiv.setAttribute('title', 'Click to view details');
-      newsDiv.classList = `card bg-white cursor-pointer group`;
+      newsDiv.classList = `card card-compact bg-white cursor-pointer group`;
       newsDiv.innerHTML = `
          <figure>
             <img src="${image_url}" alt="${title}" class="group-hover:scale-105 duration-75" />
          </figure>
          <div class="card-body">
             <h2 class="card-title">${title}</h2>
-            <p class="text-justify">${details.length > 550 ? details.slice(0, 500) + '...see more' : details}</p>
+            <p class="text-justify">${details.length > 550 ? details.slice(0, 500) + '...read full story' : details}</p>
             <div class="flex justify-between items-center">
                <div id="author-info" class="flex items-center gap-x-2">
                   <img class="rounded-full w-8 h-8" src="${img}" alt="${`Profile Image of ${name}`}">
@@ -71,16 +71,27 @@ const displayCategoryNews = (allNews, category) => {
                   </div>
                </div>
                <div id="views" class="font-bold text-center">
-                  <i class="fa-regular fa-eye"></i> ${total_view}M
+                  <i class="fa-regular fa-eye text-purple-600 font-bold"></i> ${total_view}M
                </div>
-               <div id="rating" class="text-sm">
-                  <i class="fa-solid fa-star"></i> ${rating.number}
+               <div id="rating" class="font-bold">
+                  <i class="fa-solid fa-star text-orange-400"></i> ${rating.number}
                </div>
             </div>
          </div>
       `;
       newsContainer.appendChild(newsDiv);
+      toggleLoadingSpinner(false);
    });
+}
+
+const toggleLoadingSpinner = isVisible => {
+   const spinnerContainer = document.getElementById('loading-spinner');
+   if(isVisible) {
+      spinnerContainer.classList.remove('hidden');
+   }
+   else {
+      spinnerContainer.classList.add('hidden');
+   }
 }
 
 loadNewsByCategory(null, '08'); // load all news by default using all news category id which is "08"
