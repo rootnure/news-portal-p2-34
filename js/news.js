@@ -50,11 +50,13 @@ const displayCategoryNews = (allNews, category) => {
    }
 
    allNews.forEach(news => {
-      const { image_url, title, details, author, rating, total_view } = news;
+      const { _id, image_url, title, details, author, rating, total_view } = news;
       const {img, name, published_date} = author;
       const newsDiv = document.createElement('div');
       newsDiv.setAttribute('title', 'Click to view details');
+      newsDiv.setAttribute('onclick', `openDetailsModal('${_id}')`);
       newsDiv.classList = `card card-compact bg-white cursor-pointer group`;
+
       newsDiv.innerHTML = `
          <figure>
             <img src="${image_url}" alt="${title}" class="group-hover:scale-105 duration-75" />
@@ -92,6 +94,14 @@ const toggleLoadingSpinner = isVisible => {
    else {
       spinnerContainer.classList.add('hidden');
    }
+}
+
+const openDetailsModal = async (newsId) => {
+   const apiUrl = `https://openapi.programming-hero.com/api/news/${newsId}`;
+   const res = await fetch(apiUrl);
+   const data = await res.json();
+   const news = data.data[0];
+   console.log(news);
 }
 
 loadNewsByCategory(null, '08'); // load all news by default using all news category id which is "08"
