@@ -17,6 +17,12 @@ const displayAllCategory = categories => {
 }
 
 const loadNewsByCategory = async (target, categoryId = '08') => {
+   const activeTab = document.querySelector('.active-tab');
+   console.log(activeTab);
+   console.log(target);
+   target ? activeTab.classList.remove("active-tab") : "";
+   target ? target.classList.add('active-tab') : "";
+
    const apiUrl = `https://openapi.programming-hero.com/api/news/category/${categoryId}`;
    const res = await fetch(apiUrl);
    const data = await res.json();
@@ -29,9 +35,19 @@ const displayCategoryNews = (allNews, category) => {
    const resultCount = document.getElementById('result-count');
    const resultCountFor = document.getElementById('result-count-for');
    const newsContainer = document.getElementById('news-container');
+   newsContainer.textContent = '';
 
-   resultCount.innerText = allNews.length;
+   resultCount.innerText = allNews.length ? allNews.length : "No";
    resultCountFor.innerText = category;
+   
+   if(allNews.length === 0) {
+      newsContainer.innerHTML = `
+         <div class="h-96 w-full flex justify-center items-center md:col-span-2 lg:col-span-3">
+            <h2 class="text-4xl font-bold"><span class="text-red-500">Oops!!!</span> No news found for "<span class="italic">${category}</span>" category...</h2>
+         </div>
+      `;
+      return;
+   }
 
    allNews.forEach(news => {
       const { image_url, title, details, author, rating, total_view } = news;
@@ -67,6 +83,6 @@ const displayCategoryNews = (allNews, category) => {
    });
 }
 
-loadNewsByCategory(null, '02');
+loadNewsByCategory(null, '08'); // load all news by default using all news category id which is "08"
 
 loadAllCategories();
